@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid</title>
+    <style>
+      
+
+        .container {
+  position: relative;
+  overflow: hidden;
+  padding: 60px;
+  max-width: 700px;
+  height: 550px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.2);
+  background-image: url("https://snap-photos.s3.amazonaws.com/img-thumbs/960w/1L5F5R0M42.jpg");
+  background-size: cover;
+}
+
+.hamburger {
+  position: relative;
+  z-index: 9000;
+  width: 2.5em;
+  height: 2.5em;
+}
+.hamburger:hover {
+  cursor: pointer;
+}
+
+.hamburger__line {
+  content: " ";
+  display: block;
+  width: 100%;
+  height: 0.1875em;
+  background: black;
+  border-radius: 0.5em;
+  margin-bottom: 0.5em;
+}
+.hamburger__line:last-child {
+  margin-bottom: 0;
+}
+
+.hamburger--steps .hamburger__line {
+  transition: width 0.12s ease-in-out;
+}
+.hamburger--steps .hamburger__line:nth-child(2) {
+  width: 80%;
+}
+.hamburger--steps .hamburger__line:last-child {
+  width: 55%;
+}
+
+.hamburger--steps-right .hamburger__line {
+  float: right;
+}
+
+.hamburger--steps:hover .hamburger__line {
+  width: 100%;
+}
+
+.hamburger--active.hamburger--steps .hamburger__line {
+  transition: none;
+  width: 100%;
+}
+
+.hamburger--active .hamburger__line {
+  position: absolute;
+  top: 0.8em;
+  margin: 0;
+  background: white;
+}
+.hamburger--active .hamburger__line:first-child {
+  transform: rotate(-45deg);
+}
+.hamburger--active .hamburger__line:nth-child(2) {
+  display: none;
+}
+.hamburger--active .hamburger__line:last-child {
+  transform: rotate(45deg);
+}
+
+.nav-fullscreen {
+  position: fixed;
+  display: flex;
+  z-index: 800;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.2s, visibility 0.2s;
+}
+.nav-fullscreen--open {
+  opacity: 1;
+  visibility: visible;
+}
+.nav-fullscreen__items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  font-size: 3rem;
+  line-height: 6rem;
+}
+@media (max-width: 375px) {
+  .nav-fullscreen__items {
+    font-size: 2rem;
+    line-height: 4rem;
+  }
+}
+.nav-fullscreen__item a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.1s ease-in-out;
+}
+.nav-fullscreen__item a:hover {
+  color: #CCCCCC;
+}
+
+@-webkit-keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -30%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -30%, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@-webkit-keyframes fadeOutUp {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, -30%, 0);
+  }
+}
+@keyframes fadeOutUp {
+  from {
+    opacity: 1;
+    transform: none;
+  }
+  to {
+    opacity: 0;
+    transform: translate3d(0, -30%, 0);
+  }
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="nav-fullscreen">
+           <ul class="nav-fullscreen__items">
+              <li class="nav-fullscreen__item"><a href="#">HTML</a></li>
+              <li class="nav-fullscreen__item"><a href="#">CSS</a></li>
+              <li class="nav-fullscreen__item"><a href="#">JavaScript</a></li>
+              <li class="nav-fullscreen__item"><a href="#">Menu</a></li>
+           </ul>
+        </div>
+        <div class="hamburger hamburger--steps">
+           <div class="hamburger__line"></div>
+           <div class="hamburger__line"></div>
+           <div class="hamburger__line"></div>
+        </div>
+     </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+document.querySelector('.hamburger').addEventListener("click", function() {
+    this.classList.toggle("hamburger--active");
+    document.querySelector(".nav-fullscreen").classList.toggle("nav-fullscreen--open");
+});
+
+});
+    </script>
+</body>
+</html>
